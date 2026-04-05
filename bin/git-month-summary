@@ -65,7 +65,7 @@ for my $repo (@repos) {
     say '## ', repo_display_name($repo, $opt{dir});
     say '';
     say $summary;
-    say "---\n";
+    say "\n---\n";
 }
 
 exit 0;
