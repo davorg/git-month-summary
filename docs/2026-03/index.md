@@ -1,256 +1,291 @@
 ## 127people
 
-- Added GitHub workflow and configuration files to support Copilot onboarding/setup, including a setup-step fix and a new instructions document for agents.
-- Updated the Perl dependency list so the project’s `cpanfile` includes all required modules.
-- Added Dependabot configuration under `.github` to support dependency update automation.
-- Overall, March’s changes were small and focused on repository setup, dependency completeness, and developer tooling rather than product features.
+- Added GitHub configuration to support automation, including Dependabot settings and a Copilot setup workflow.
+- Expanded the project’s Copilot onboarding guidance with a new instructions file for agent use.
+- Fixed dependency and setup issues so the project’s Perl dependencies are declared more completely and the Copilot setup runs from the correct working directory.
+- Overall, March’s changes were small and focused on repository configuration and build/setup reliability rather than product features.
+
 ---
 
 ## aphra-web
 
-- Small month overall: the main project change was a build workflow update to display the Aphra version during site builds.
-- The GitHub Actions workflow was also updated to use `actions/upload-artifact` v7.
-- A minor documentation correction was made in the documentation index page.
+- Updated the site build workflow to display the Aphra version during builds, and also bumped the `actions/upload-artifact` GitHub Action from v6 to v7.
+- Made a small documentation correction in `in/documentation/index.html.md`.
+- Overall, March’s changes were minor and focused on build/deployment configuration plus a small docs fix.
+
 ---
 
 ## bs-checker
 
-- Improved the checker’s handling of crawl failures and version parsing, including clearer reporting in the web output when HTTP errors or Bootstrap-related version lookups fail.
-- Updated the site-fetching logic to use a more browser-like user agent and direct LWP requests, which fixed 403 errors and related workflow issues.
-- Refined Bootstrap detection so it now distinguishes between “Bootstrap not used” and “Bootstrap version not found”, making error messages more accurate.
-- Added and adjusted GitHub Actions/Copilot workflow configuration, including a new Copilot setup workflow and dependency bumps for checkout and upload-artifact.
-- Made a few small clean-ups in the Perl code and documentation; overall, the month’s changes were fairly modest and focused on reliability and maintenance.
+- Added clearer crawl error handling and reporting, including surfacing HTTP failures and stylesheet version-parse problems in the documentation/UI.
+- Improved how the checker fetches pages, switching to a more reliable LWP-based approach with browser-like headers and a custom user agent to avoid 403 errors.
+- Refined Bootstrap detection so it now distinguishes between “Bootstrap not used” and “Bootstrap version not found”, making site checks more accurate.
+- Made a small amount of refactoring and cleanup in `lib/BS_Checker.pm`, including simplifying some variable handling and removing redundant initialisation.
+- Updated GitHub Actions workflow configuration and repository onboarding files for Copilot, plus a couple of dependency bumps; overall these changes were fairly small and focused on maintenance.
+
 ---
 
 ## claphamshopfronts
 
-- Added a basic website under `docs/`, including a new `index.html` and `CNAME` file for site hosting.
-- Created the initial empty database and accompanying DDL schema, establishing the project’s first data model.
-- The month’s work was small and focused mainly on initial setup and deployment-related configuration rather than feature development or bug fixing.
+- Added a basic website for the project, including a new `docs/index.html` page.
+- Introduced the initial empty database and schema definition for the application.
+- Made a small deployment/configuration change around the site’s `CNAME` file, with a brief add/remove/add sequence.
+
 ---
 
 ## cool-stuff
 
 - March was a small, content-focused month: the main change was a steady stream of new site entries added to `docs/_data/coolstuff.yml`.
-- There was one manual update to the site data near the end of the month.
-- The update workflow was adjusted slightly, with the fetch script moved into `bin/` and the GitHub Actions workflow updated to match.
+- There was one manual update to the same data file, suggesting a minor curation or correction alongside the automated additions.
+- The update workflow was adjusted slightly, with the site-fetching script moved into `bin/` and the GitHub Actions workflow updated to match.
+
 ---
 
 ## cpan/amazon-sites
 
-- Added new author/metadata tests and a Copilot setup workflow, alongside repository onboarding guidance for contributors.
-- Made a small round of Perl module clean-up in `Amazon::Site` and `Amazon::Sites`, including version handling and class/package declaration tweaks to satisfy tests.
-- Fixed test-related issues in the module layout, with several follow-up edits to keep the xt checks passing.
-- Prepared a release by updating the changelog and bumping the version; overall, the month’s changes were fairly small and focused on housekeeping and test compatibility.
+- Added new author-side tests for version metadata and CPAN META checks, though they were noted as currently failing at the time.
+- Made a series of small fixes to `Amazon::Site` and `Amazon::Sites` to satisfy the new tests, including adjusting package/version declarations and tidying class syntax.
+- Bumped the distribution version in preparation for release and updated the changelog.
+- Added Copilot-related repository setup and onboarding files, including a workflow and instructions document.
+
 ---
 
 ## cpan/app-aphra
 
 - Fixed a double-encoding bug and added a UTF-8 regression test, improving handling of encoded content.
-- Added author-side tests and tidied metadata/dependency declarations, strengthening release checks.
-- Made a series of Docker and build-script improvements, including a substantially reworked `docker/build` and a cleaner Dockerfile.
-- Removed the auto-release workflow and added Copilot setup steps for the repository.
-- Made a few small documentation and comment fixes, plus a release prep update for 0.2.9.
+- Added author-side tests and tidied up metadata/dependency declarations, strengthening release checks and packaging.
+- Made a series of Docker and build-script improvements, including a substantially reworked `docker/build` and a better `Dockerfile`.
+- Removed the auto-release workflow and added Copilot setup steps for GitHub Actions.
+- A few small documentation and comment fixes were also made, alongside prep work for release 0.2.9.
+
 ---
 
 ## cpan/app-blurfill
 
-- Updated the Docker publishing workflow to newer major versions of the GitHub Actions used for build, login and buildx setup.
-- Fixed a port number in the README, so the documented setup now matches the intended configuration.
-- Changes were small overall, with no new features or broader refactoring visible in the log.
+- Updated the Docker publishing workflow to newer major versions of the GitHub Actions used for build, login and buildx, which is a small maintenance/configuration refresh.
+- Fixed the README’s port number so the documented setup matches the current configuration.
+- No other functional changes, bug fixes or feature work are shown in the March log.
+
 ---
 
 ## cpan/app-httpthis
 
-- Reworked the project away from Dist::Zilla towards a more conventional Perl distribution setup, adding a `Makefile.PL`, `INSTALL`, `LICENSE`, `MANIFEST`, and `README`, and removing the old Dist::Zilla configuration.
-- Added and adjusted CI/workflow support, including a new debug workflow and a fix to the existing GitHub Actions trigger/setup.
-- Made a small release-oriented update to `App::HTTPThis`, including a dependency fix and a tidy-up of POD ordering in the module documentation.
-- Expanded author and compile checks, with new tests for distribution metadata, EOLs, tabs, POD syntax/coverage, and compile-time loading.
+- The project was moved away from Dist::Zilla towards a more traditional Perl distribution setup, with a new `Makefile.PL`, updated packaging files, and refreshed documentation such as `INSTALL`, `LICENSE`, `README` and `MANIFEST`.
+- `App::HTTPThis` saw some small code clean-ups, including a fix to Pod ordering and a dependency-related version update.
+- Test coverage and author checks were expanded, with new compile and metadata-style tests added alongside updates to existing EOL, tab and Pod-related checks.
+- GitHub Actions workflows were adjusted, including a debug workflow and some tweaks to existing CI/setup configuration.
+- Overall, March’s changes were fairly substantial in setup and packaging, but the application code changes themselves were relatively small.
+
 ---
 
 ## cpan/app-linksite
 
-- Added a new GitHub Actions workflow for static checks, introducing CI/deployment automation for the project.
-- This appears to be a small, focused change for March, with no other code, documentation, or test updates shown in the log.
+- Added a new GitHub Actions workflow for static checks, introducing CI/deployment automation for the repository.
+- The month’s change set was very small and focused entirely on build/configuration work; no application code, tests, or documentation were changed.
+
 ---
 
 ## cpan/genealogy-relationship
 
-- Added support for two-parent relationships, with broader changes to ancestor, MRCA and coordinate calculations, plus new tests and test helpers to cover the updated behaviour.
+- Added support for people with two parents, including updates to ancestor, MRCA and coordinate-related logic, plus new tests and test helpers to cover the new behaviour.
 - Introduced a configurable `parents_field_name` setting so the module can work with different parent field names, again backed by new tests.
-- Refactored the code for compatibility with older Perl versions by switching to `Feature::Compat::Class` and adjusting the module and test classes accordingly.
-- Made a few smaller maintenance updates: fixed the SYNOPSIS method name, updated the copyright year, cleaned up accidentally committed `wget-log` files, and added the missing release notes entries.
-- Test coverage was improved, including clearer labels in the cousins test file.
+- Refactored the code for compatibility with older Perl versions by switching to `Feature::Compat::Class`.
+- Made a small release housekeeping pass: updated the changelog and version to 2.0.0, fixed a SYNOPSIS method name, refreshed the copyright year, and removed accidentally committed `wget-log` files.
+
 ---
 
 ## cpan/moox-role-seotags
 
-- Updated the README and publishing setup so the project now presents more like a small website, with badges added and static publishing limited to changes in `README.md`.
-- Fixed the Git links in `Makefile.PL` and removed the unnecessary Moose prerequisite.
-- Addressed an experimental warnings issue in the module code.
-- Overall, March’s work was fairly small and mostly focused on documentation, packaging, and release/deployment polish.
+- Updated the README and site publishing setup, including adding badges and turning the README into a simple website for the project.
+- Adjusted the GitHub Actions workflow so the site is only republished when `README.md` changes, reducing unnecessary deployment runs.
+- Fixed the Git links in `Makefile.PL` and removed an unnecessary Moose prerequisite.
+- Made a small code fix to address experimental warnings in the module.
+
 ---
 
 ## cpan/plack-app-directoryindex
 
-- Fixed the GitHub Actions workflow trigger and updated the workflow to use a newer `actions/checkout` version.
-- Tightened the dependency requirement for `WebServer::DirIndex`, including a follow-up correction to the minimum version needed.
-- Released version 0.2.1 and then 0.2.2, with the accompanying changelog and module metadata updates.
-- Overall, March’s work was small and mostly maintenance-focused, with no major feature changes.
+- Fixed the GitHub Actions workflow trigger and updated the checkout action used by the copilot setup workflow.
+- Released version 0.2.1 and then 0.2.2, with the latter correcting the required version of `WebServer::DirIndex`.
+- Tightened the module and build metadata so the distribution now requires `WebServer::DirIndex` 0.1.4.
+- Overall, March’s changes were small and mostly focused on dependency/version housekeeping and CI configuration.
+
 ---
 
 ## cpan/toon
 
-- Added support for tabular TOON syntax in the pure-Perl decoder/encoder, fixing round-trip behaviour for more complex data.
-- Expanded the test suite with round-trip and more complex parsing coverage, including tabular data cases.
-- Improved the `toon_pp` command-line tool with POD documentation, a `--version`/`-v` flag, and output that uses the script name rather than a hard-coded label.
-- Updated the README to document the tabular syntax and clarify the supported syntax, and prepared the 0.1.0 release with accompanying metadata and changelog updates.
+- Added support for tabular TOON syntax in the pure-Perl decoder/encoder, fixing round-trip behaviour and extending the parser to handle more complex data structures.
+- Expanded test coverage for the new tabular format and other complex parsing cases.
+- Improved the `toon_pp` command-line tool with POD documentation, a `--version`/`-v` flag, and a small cleanup to derive its name from the executable rather than a hard-coded string.
+- Updated the README to document the tabular syntax and broaden the description of supported syntax, and prepared the 0.1.0 release with accompanying changes to versioning and release notes.
+
 ---
 
 ## cpan/webserver-dirindex
 
-- Added and adjusted GitHub Pages/static-site workflow support, including a step to generate `index.html` and fixes to workflow triggers; the CI/deployment configuration was also updated to use newer GitHub Actions versions.
-- Updated the README with badges and small wording fixes, alongside a badge correction.
-- Made a series of versioning and packaging changes around the March releases, including bumping the module version and setting `$VERSION` in a more traditional way to keep `cpanm` happy.
-- Added author-only tests for version and CPAN metadata checks.
-- Made a couple of small maintenance fixes, including a typo correction and minor housekeeping in the CSS/module files.
+- Added and adjusted GitHub Pages/static site workflow support, including a step to generate `index.html`, trigger fixes, and dependency updates for the Actions used by the deployment workflow.
+- Updated the README with badges and other small documentation tweaks.
+- Made a series of versioning and packaging changes around early March releases, including setting `$VERSION` in the traditional way and adding a package line to keep `cpanm` happy.
+- Added author-side tests for version and CPAN metadata checks.
+- Made a few small follow-up fixes, including a typo correction and minor CSS/documentation updates.
+
 ---
 
 ## dave.org.uk
 
-- The month was mostly routine automated updates: weekly data builds refreshed `docs/data/laststats.json` and the associated date file each week.
-- There were also two small deployment workflow dependency bumps, updating `actions/configure-pages` and `actions/deploy-pages` in the GitHub Pages build workflow.
-- No larger feature work, bug fixes, or refactoring is evident from the log; the changes look minor and maintenance-focused.
+- The month was dominated by routine weekly data refreshes, with `docs/data/laststats.json` and `docs/data/date.dat` updated four times as part of the automated weekly data build.
+- There were also two small deployment workflow dependency bumps, upgrading `actions/configure-pages` and `actions/deploy-pages` in the GitHub Pages build workflow.
+- No broader feature work, bug fixes, or documentation changes are evident in the March log.
+
 ---
 
 ## davecross.co.uk
 
-- Updated the books pages to use reusable include files for Amazon/store links, replacing the older inline link lists.
-- Fixed a small content issue around the “Buy:” label on book pages, then later removed that label again as part of tidying the presentation.
-- Added repository onboarding guidance for Copilot in `.github/copilot-instructions.md`.
-- Overall, March’s changes were small and mostly focused on site content cleanup and a bit of configuration/documentation work.
+- Updated the books page to use new `amazon-store` and `buy_book` includes, replacing the older Amazon link lists and fixing a brief loss of the “Buy:” text.
+- Added repository onboarding guidance in `.github/copilot-instructions.md`.
+- Made a small follow-up tweak to the book-buying include after the new layout was introduced.
+- Overall, March’s changes were modest and focused on improving the books section and related site configuration.
+
 ---
 
 ## davorg.github.io
 
-- Updated the README with a few small content tweaks, including adding more links and adjusting image sizing.
-- The month’s work was very minor overall, with changes limited to documentation/content rather than code, tests or deployment.
+- Updated the README with a few small content tweaks, mainly around image sizing and presentation.
+- Added a handful of extra links to the README.
+- Overall, March’s changes were minor and documentation-only, with no code, build, test or deployment work evident.
+
 ---
 
 ## dmpweb
 
-- Very small month of work overall, with a single minor change to the site’s `index.html`.
-- One line was adjusted in the main page, suggesting a tiny content or wording correction rather than a broader feature or refactor.
+- Very small month of work: a single minor change to `index.html`.
+- One line was adjusted in the page content, with no broader feature, build, test, or deployment changes visible in the log.
+
 ---
 
 ## films
 
-- Added a new `seen` property to watchlist entries and updated several entries accordingly, laying the groundwork for tracking films already watched.
-- Introduced a UI change to display seen films in greyscale, with the effect clearing on hover.
-- Made a small follow-up tweak to the watchlist data, including a typo fix and one additional film entry.
-- Removed an unneeded ZIP artefact from the repository; overall, the month’s changes were fairly small and focused.
+- Added support for marking watchlist entries as seen, with several entries updated in the watchlist data.
+- Updated the site to display seen films in greyscale, with the effect clearing on hover.
+- Made a small supporting change to the update script and stylesheet for that visual treatment.
+- Tidied the watchlist data further with a typo fix and one new film entry; overall, March’s changes were fairly small.
+- Removed an unneeded ZIP file from the repository.
+
 ---
 
 ## fit
 
-- The project was brought up to an initial working version, adding the main app, page layout, styling and plan data, along with a `.nojekyll` file for deployment on GitHub Pages.
-- A substantial new feature was added for Google sign-in via Supabase, including user accounts and cloud progress storage, plus setup documentation and related UI/configuration changes.
-- The login UI was then refined so the button hides correctly when signed in, and both auth buttons are hidden when authentication is not configured; the sign-in flow also had error-handling and event-listener fixes.
-- There were a few small follow-up tweaks to configuration and a minor typo fix.
-- The plan data was simplified by removing the roller.
+- Added the initial version of the app, with the main interface, styling and plan data, plus a `.nojekyll` file for GitHub Pages deployment.
+- Introduced Google sign-in via Supabase for user accounts and cloud progress storage, with accompanying setup documentation and UI/configuration changes.
+- Fixed a few early issues around authentication, including the login button staying visible when signed in, button re-enabling on error, and hiding auth controls when unconfigured.
+- Made small follow-up tweaks to configuration and removed the roller from the plan data.
+
 ---
 
 ## gigs
 
-- Very small month overall: a single documentation tweak was made.
-- Fixed a broken link in `index.md`.
+- A very small change: fixed a broken link in `index.md`.
+- No other March work is shown in the log, so this month appears to have been limited to a minor documentation correction.
+
 ---
 
 ## github_workflows
 
-- Updated the GitHub Actions setup for CPAN testing, including ensuring a current toolchain, fixing a missing `shell` setting, and improving archive naming.
-- Bumped `actions/upload-artifact` from v6 to v7 in the CPAN test workflows.
-- These were small workflow/configuration changes rather than broader feature work.
+- Updated the GitHub Actions setup for CPAN testing, including ensuring a current toolchain, adding a missing `shell` setting, and improving archive naming.
+- Bumped `actions/upload-artifact` from v6 to v7 in the workflow files.
+- Overall, March’s changes were small and focused on CI/workflow maintenance rather than application code.
+
 ---
 
 ## gitme
 
 - Added a project website setup, including a new GitHub Pages-style workflow and Dependabot configuration.
 - Updated the README with a GitHub badge, then fixed that badge shortly afterwards.
-- Overall, March’s changes were small and focused on repository presentation and basic site/deployment configuration.
+- Overall, March’s changes were small and mostly focused on repository presentation and basic site/deployment configuration.
+
 ---
 
 ## got
 
 - Added a new cast-status display so characters are shown as alive or dead.
-- Updated the main cast data and adjusted the app logic to support the new status information.
-- Refreshed the styling to accommodate the new presentation.
+- Updated the main cast data to support that status information.
+- Adjusted the app logic and styling to present the new status cleanly in the interface.
+
 ---
 
 ## learn.davecross.co.uk
 
-- Very small month overall: the only project changes were a typo tidy-up in the slides template and a minor wording correction.
-- Updated the GitHub Actions workflow to use `actions/upload-artifact` v7 instead of v6.
-- No feature work, bug fixes, tests, or broader refactoring were evident in the log.
+- Very small month overall: just a minor typo fix in the slides template.
+- Updated the site build workflow to use a newer version of `actions/upload-artifact`.
+- No new features, tests, or broader refactoring were evident from the log.
+
 ---
 
 ## perl5lib_auto
 
-- Added initial website/deployment support by introducing a GitHub Pages-style workflow and Dependabot configuration.
-- The month’s work appears to be small and focused, with no code changes beyond the new site/build automation files.
+- Added basic website/deployment support by introducing a new GitHub Pages-style workflow and Dependabot configuration.
+- The change is small and focused on project infrastructure rather than application code.
+
 ---
 
 ## perlschool-sales
 
-- Added a substantial new Leanpub royalty-processing area, including a database schema, standing data, a SQLite database, and a large ingestion script for royalties.
-- Introduced a monthly workflow document and expanded the README to explain how the Leanpub process works.
-- Renamed and enhanced the royalties import script, adding `--dry-run`, `--verbose` and `--help` options to make it safer and easier to use.
-- Added a new `allocate_royalties` helper script and updated the documentation to cover it.
-- Set up project scaffolding for future automation, including a top-level `cpanfile` and a GitHub Copilot setup workflow.
+- Added a substantial new Leanpub royalty-processing area, including a database schema, standing data, a SQLite database, and a large set of Perl schema/result classes.
+- Introduced and then refined the royalty import workflow, renaming the script to `import_royalties` and adding `--dry-run`, `--verbose` and `--help` options.
+- Added a new `allocate_royalties` script to handle royalty allocation, alongside updates to the monthly processing documentation.
+- Expanded the top-level project documentation and onboarding material, including the README, monthly workflow notes, and Copilot setup instructions.
+- Added a top-level `cpanfile` and a GitHub Actions workflow for Copilot setup; overall, this was a fairly large month of new functionality and supporting configuration.
+
 ---
 
 ## planetperl
 
-- Updated the GitHub Actions build workflow to use `actions/upload-artifact` v7 instead of v6.
-- This was a very small maintenance-only change, with no functional code changes, tests, or documentation updates.
+- Updated the site build workflow to use `actions/upload-artifact` v7 instead of v6.
+- This was a very small maintenance change, with no other functional code, documentation, or test updates in the month.
+
 ---
 
 ## readme-to-index
 
-- Updated the README with clearer guidance, including a note about installing Pandoc and links to the repository and issue tracker.
-- Improved the action’s Pandoc installation mechanism in `action.yml`, suggesting a small but useful configuration refinement.
-- Overall, March’s work was modest and focused mainly on documentation and setup clarity rather than new functionality.
+- Improved the README with clearer guidance, including a note about installing Pandoc and links to the repository and issue tracker.
+- Updated the GitHub Action configuration to use a better mechanism for installing Pandoc.
+- Made a small wording tweak to an existing note in the documentation.
+- Overall, March’s work was modest and focused on documentation and setup improvements rather than new product features.
+
 ---
 
 ## royalrels
 
-- Added support for people with two parents, updating the relationship calculation so the generated family links are more accurate; this also corrected some previously wrong cousin relationships.
-- Extended the monarch data back to Alfred the Great via two lineages, with large regenerations of the generated data files and CSV inputs.
-- Improved the legend in the web view: it now uses a horizontal layout, smaller boxes, less padding, a hide/show toggle, and better behaviour on narrow screens.
-- Added a Copilot setup workflow and refreshed the agent onboarding instructions to match the current project structure and dependency setup.
+- Added support for recording two parents per monarch, which improved relationship calculations and corrected some previously wrong results, including James V of Scotland and Elizabeth I.
+- Extended the monarch data back to Alfred the Great via two lineages, with further adjustment to prefer the Wessex route from Alfred to Matilda.
+- Made several small front-end legend improvements in the documentation view: smaller boxes, less padding, a hide/show toggle, and better behaviour on narrow screens.
+- Updated project setup and contributor guidance for the new architecture, including Copilot onboarding, dependency instructions, and a new setup workflow.
+
 ---
 
 ## step-story
 
-- Built out the StepStory static web app from scratch, adding the main app logic, interface and styling for the MVP.
-- Added progress-report features including an estimated arrival date, and made “kilometres walked so far” optional by calculating it from daily distance and elapsed days when omitted.
-- Made a small wording tweak to the feedback text for clarity.
-- Added GitHub Pages deployment via GitHub Actions, so the site now deploys automatically from the main branch.
-- Added repository configuration for Copilot onboarding and Dependabot updates.
+- The project moved from a minimal initial commit to a working static web app for StepStory Ultra MVP, with the main UI, styling and client-side logic added in one substantial change.
+- Core progress-report behaviour was expanded: estimated arrival dates are now shown, and “kilometres walked so far” can be left blank and calculated from daily distance and elapsed days.
+- The feedback text was tweaked for clarity, a small wording fix rather than a functional change.
+- Deployment and project setup were put in place, including a GitHub Actions workflow for publishing to GitHub Pages plus Dependabot and Copilot configuration files.
+
 ---
 
 ## succession
 
-- The month was dominated by automated database refreshes from the audit workflow, with repeated updates to `data/succession_dump.sql` and the bundled SQLite database; these appear to be routine data synchronisations rather than feature work.
-- There was a small build/configuration change to the GitHub Actions workflows, bumping `actions/upload-artifact` from v6 to v7 in both the audit and container build pipelines.
-- No substantive application code changes, bug fixes, or documentation updates are evident in the log for March.
+- The month was dominated by automated database refreshes from the audit workflow, with `data/succession_dump.sql` updated repeatedly and the SQLite database kept in sync; these appear to be routine data maintenance changes rather than functional code work.
+- There was a small CI/configuration update to GitHub Actions, bumping `actions/upload-artifact` from v6 to v7 in the audit and container build workflows.
+- No substantive application features, bug fixes, refactoring, or documentation changes are evident in the March log.
+
 ---
 
 ## tiobe-perl
 
 - Added an automated TIOBE data updater script and GitHub Actions workflow, introducing scheduled data refreshes for the project.
-- Adjusted the update schedule to run at 03:00 UTC.
-- Added a `.gitignore` and cleaned up an accidentally committed `__pycache__` file.
-- Updated the March 2026 TIOBE data file in the documentation data set; overall, the month’s changes were fairly small.
+- Tidied repository housekeeping by adding a `.gitignore` and removing an accidentally committed `__pycache__` file.
+- Updated the TIOBE data for March 2026 in the documentation data set.
+- Adjusted the update schedule so the data job now runs at 03:00 UTC.
+
 ---
 
