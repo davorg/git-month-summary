@@ -1,0 +1,23 @@
+# Standard CPAN exclusions
+^\.git/
+^\.github/
+\bRCS\b
+\bCVS\b
+^MANIFEST\.SKIP$
+^Makefile$
+^blib/
+^pm_to_blib
+^blibdirs
+\.old$
+~$
+\.bak$
+^_build/
+^Build$
+^Build.bat$
+\.swp$
+\.orig$
+^docs/
+\b\.DS_Store\b
+^MYMETA\.
+^\.tidyrc$
+^\.perltidyrc$

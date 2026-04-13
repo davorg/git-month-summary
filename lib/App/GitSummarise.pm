@@ -1,5 +1,7 @@
 package App::GitSummarise;
 
+our $VERSION = '0.0.1';
+
 use v5.40;
 use utf8;
 use feature 'class';
@@ -290,3 +292,104 @@ END_PROMPT
 }
 
 1;
+
+__END__
+
+=head1 NAME
+
+App::GitSummarise - Summarise a month of Git activity using an LLM
+
+=head1 VERSION
+
+version 0.0.1
+
+=head1 SYNOPSIS
+
+  use App::GitSummarise;
+
+  App::GitSummarise->new->run;
+
+=head1 DESCRIPTION
+
+C<App::GitSummarise> scans a directory tree for Git repositories,
+collects the commit log for a given month, and sends it to the OpenAI
+Chat Completions API to produce a concise, bullet-point Markdown
+summary of each repository's activity.
+
+It is designed to be driven by the L<git-month-summary> command-line
+script.
+
+=head1 CONSTRUCTOR
+
+=head2 new
+
+  my $app = App::GitSummarise->new;
+
+Creates a new C<App::GitSummarise> object.  Parses C<@ARGV> for the
+following options:
+
+=over 4
+
+=item B<--month> I<N>
+
+Month number (1-12).  Required.
+
+=item B<--year> I<YYYY>
+
+Four-digit year.  Required.
+
+=item B<--dir> I<PATH>
+
+Root directory to scan for Git repositories.
+Defaults to F<~/git>.
+
+=item B<--model> I<MODEL>
+
+OpenAI model name.
+Defaults to C<gpt-5.4-mini>.
+
+=item B<--max-input-len> I<N>
+
+Maximum number of characters of C<git log> output sent to the model.
+Defaults to C<30000>.
+
+=back
+
+Dies if C<OPENAI_API_KEY> is not set in the environment.
+
+=head1 METHODS
+
+=head2 run
+
+  $app->run;
+
+Runs the full pipeline: discovers repositories, retrieves the Git log
+for each, requests a summary from OpenAI, and prints the results to
+C<STDOUT> as Markdown.
+
+=head1 ENVIRONMENT
+
+=over 4
+
+=item C<OPENAI_API_KEY>
+
+Must be set to a valid OpenAI API key before running.
+
+=back
+
+=head1 SEE ALSO
+
+L<git-month-summary>, L<OpenAPI::Client::OpenAI>, L<Git::Repository>
+
+=head1 AUTHOR
+
+Dave Cross E<lt>dave@perlhacks.comE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2026 Dave Cross.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut

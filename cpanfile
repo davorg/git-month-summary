@@ -10,3 +10,8 @@ on 'test' => sub {
     requires 'Test::MockModule';
     requires 'Capture::Tiny';
 };
+
+on 'develop' => sub {
+    requires 'Test::Pod'          => '1.00';
+    requires 'Test::Pod::Coverage' => '1.00';
+};
