@@ -153,14 +153,17 @@ END_USAGE
     }
 
     method _git_month_log ($repo, $since, $until) {
-        my $r = eval { Git::Repository->new(work_tree => $repo) };
-        if ($@) {
-            warn "Could not open git repository at $repo: $@\n";
+        my $r;
+        try {
+            $r = Git::Repository->new(work_tree => $repo);
+        } catch ($e) {
+            warn "Could not open git repository at $repo: $e\n";
             return;
         }
 
-        my $stdout = eval {
-            $r->run(
+        my $stdout;
+        try {
+            $stdout = $r->run(
                 'log',
                 '--no-merges',
                 "--since=$since",
@@ -169,10 +172,8 @@ END_USAGE
                 '--pretty=format:commit %H%nAuthor: %an <%ae>%nDate: %ad%nSubject: %s%n%n%b%n---',
                 '--stat=120,80',
             );
-        };
-
-        if ($@) {
-            warn "git log failed for $repo: $@\n";
+        } catch ($e) {
+            warn "git log failed for $repo: $e\n";
             return;
         }
 
@@ -271,10 +272,20 @@ END_PROMPT
     }
 
     method _repo_has_commits ($repo) {
-        my $r = eval { Git::Repository->new(work_tree => $repo) };
-        return 0 unless $r;
-        eval { $r->run('rev-parse', '--verify', 'HEAD') };
-        return $@ ? 0 : 1;
+        my $r;
+        try {
+            $r = Git::Repository->new(work_tree => $repo);
+        } catch ($e) {
+            return 0;
+        }
+
+        try {
+            $r->run('rev-parse', '--verify', 'HEAD');
+        } catch ($e) {
+            return 0;
+        }
+
+        return 1;
     }
 }
 
