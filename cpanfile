@@ -1,7 +1,7 @@
-require 'Getopt::Long';
-require 'File::Find';
-require 'File::Spec';
-require 'Cwd';
-require 'IPC::Open3';
-require 'Symbol';
-require 'OpenAPI::Client::OpenAI';
+requires 'Getopt::Long';
+requires 'File::Find';
+requires 'File::Spec';
+requires 'Cwd';
+requires 'IPC::Open3';
+requires 'Symbol';
+requires 'OpenAPI::Client::OpenAI';
