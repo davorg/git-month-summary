@@ -53,7 +53,7 @@ class App::GitSummarise {
             next unless $self->_repo_has_commits($repo);
 
             my $log = $self->_git_month_log($repo, $since, $until);
-            next unless defined $log && length $log =~ /\S/;
+            next unless defined $log && $log =~ /\S/;
 
             my $summary = $self->_summarise_repo_changes(
                 client      => $client,
