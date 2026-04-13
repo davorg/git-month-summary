@@ -9,8 +9,7 @@ use Getopt::Long qw(GetOptions);
 use File::Find qw(find);
 use File::Spec;
 use Cwd qw(abs_path);
-use IPC::Open3 qw(open3);
-use Symbol qw(gensym);
+use Git::Repository;
 use OpenAPI::Client::OpenAI;
 
 class App::GitSummarise {
@@ -154,22 +153,27 @@ END_USAGE
     }
 
     method _git_month_log ($repo, $since, $until) {
-        my @cmd = (
-            'git',
-            '-C', $repo,
-            'log',
-            '--no-merges',
-            "--since=$since",
-            "--until=$until",
-            '--date=short',
-            '--pretty=format:commit %H%nAuthor: %an <%ae>%nDate: %ad%nSubject: %s%n%n%b%n---',
-            '--stat=120,80',
-        );
+        my $r;
+        try {
+            $r = Git::Repository->new(work_tree => $repo);
+        } catch ($e) {
+            warn "Could not open git repository at $repo: $e\n";
+            return;
+        }
 
-        my ($stdout, $stderr, $exit) = _run_cmd(@cmd);
-
-        if ($exit != 0) {
-            warn "git log failed for $repo: $stderr\n";
+        my $stdout;
+        try {
+            $stdout = $r->run(
+                'log',
+                '--no-merges',
+                "--since=$since",
+                "--until=$until",
+                '--date=short',
+                '--pretty=format:commit %H%nAuthor: %an <%ae>%nDate: %ad%nSubject: %s%n%n%b%n---',
+                '--stat=120,80',
+            );
+        } catch ($e) {
+            warn "git log failed for $repo: $e\n";
             return;
         }
 
@@ -268,23 +272,20 @@ END_PROMPT
     }
 
     method _repo_has_commits ($repo) {
-        my @cmd = ('git', '-C', $repo, 'rev-parse', '--verify', 'HEAD');
-        my (undef, undef, $exit) = _run_cmd(@cmd);
-        return $exit == 0;
-    }
+        my $r;
+        try {
+            $r = Git::Repository->new(work_tree => $repo);
+        } catch ($e) {
+            return 0;
+        }
 
-    sub _run_cmd (@cmd) {
-        my $stderr = gensym;
-        my $pid = open3(undef, my $out, $stderr, @cmd);
+        try {
+            $r->run('rev-parse', '--verify', 'HEAD');
+        } catch ($e) {
+            return 0;
+        }
 
-        local $/ = undef;
-        my $stdout = <$out> // '';
-        my $errout = <$stderr> // '';
-
-        waitpid $pid, 0;
-        my $exit = $? >> 8;
-
-        return ($stdout, $errout, $exit);
+        return 1;
     }
 }
 
