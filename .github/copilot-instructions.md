@@ -87,7 +87,7 @@ cpanm --installdeps --with-develop --notest .
 - **Git log format** (`git_month_log`): Runs `git log --no-merges --since=... --until=... --stat=120,80` with a custom `--pretty=format` that includes commit hash, author, date, subject and body. Merge commits are excluded.
 - **Truncation** (`truncate_text`): Logs exceeding `--max-input-len` characters are silently truncated before being sent to the model. A notice is appended to the truncated text.
 - **Prompt** (`summarise_repo_changes`): Instructs the model to write in British English, produce 2–5 bullet points, focus on what changed (not commit mechanics), and not to invent anything unsupported by the log.
-- **External command execution** (`git_month_log`, `repo_has_commits`): Uses `Git::Repository` to interact with Git repositories. `Git::Repository->new(work_tree => $path)` creates a repository object, `$repo->run(@cmd)` runs a git command and returns output (throwing on non-zero exit), and `$repo->command(@cmd)` returns a `Git::Repository::Command` object for fine-grained access to stdout, stderr, and exit code.
+- **External command execution** (`_git_month_log`, `_repo_has_commits`): Uses `Git::Repository` to interact with Git repositories. `Git::Repository->new(work_tree => $path)` creates a repository object, `$repo->run(@cmd)` runs a git command and returns output (throwing on non-zero exit), and `$repo->command(@cmd)` returns a `Git::Repository::Command` object for fine-grained access to stdout, stderr, and exit code.
 
 ## Errors and known workarounds
 

@@ -153,28 +153,30 @@ END_USAGE
     }
 
     method _git_month_log ($repo, $since, $until) {
-        my $r   = Git::Repository->new(work_tree => $repo);
-        my $cmd = $r->command(
-            'log',
-            '--no-merges',
-            "--since=$since",
-            "--until=$until",
-            '--date=short',
-            '--pretty=format:commit %H%nAuthor: %an <%ae>%nDate: %ad%nSubject: %s%n%n%b%n---',
-            '--stat=120,80',
-        );
-
-        local $/ = undef;
-        my $stdout = readline $cmd->stdout;
-        my $stderr = readline $cmd->stderr;
-        $cmd->close;
-
-        if ($cmd->exit != 0) {
-            warn "git log failed for $repo: $stderr\n";
+        my $r = eval { Git::Repository->new(work_tree => $repo) };
+        if ($@) {
+            warn "Could not open git repository at $repo: $@\n";
             return;
         }
 
-        return $stdout // '';
+        my $stdout = eval {
+            $r->run(
+                'log',
+                '--no-merges',
+                "--since=$since",
+                "--until=$until",
+                '--date=short',
+                '--pretty=format:commit %H%nAuthor: %an <%ae>%nDate: %ad%nSubject: %s%n%n%b%n---',
+                '--stat=120,80',
+            );
+        };
+
+        if ($@) {
+            warn "git log failed for $repo: $@\n";
+            return;
+        }
+
+        return $stdout;
     }
 
     method _summarise_repo_changes (%args) {
