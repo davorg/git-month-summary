@@ -1,0 +1,14 @@
+bin/git-month-summary
+Changes.md
+cpanfile
+lib/App/GitSummarise.pm
+LICENSE
+Makefile.PL
+MANIFEST
+MANIFEST.SKIP
+t/01_load.t
+t/02_pure_methods.t
+t/03_find_git_repos.t
+t/04_git_mocked.t
+t/05_pod.t
+t/06_pod_coverage.t

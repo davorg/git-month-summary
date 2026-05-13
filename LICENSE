@@ -1,0 +1,129 @@
+Artistic License 2.0
+
+Copyright (c) 2000-2006, The Perl Foundation.
+
+Everyone is permitted to copy and distribute verbatim copies of this license
+document, but changing it is not allowed.
+
+Preamble
+
+This software is Copyright (c) 2000-2006 by The Perl Foundation.
+
+This is free software, licensed under:
+
+  The Artistic License 2.0 (GPL Compatible)
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+The "Artistic License"
+
+Preamble
+
+The intent of this document is to state the conditions under which a Package
+may be copied, such that the Copyright Holder maintains some semblance of
+artistic control over the development of the package, while giving the users
+of the package the right to use and distribute the Package in a more-or-less
+customary fashion, plus the right to make reasonable modifications.
+
+Definitions
+
+"Package" refers to the collection of files distributed by the Copyright
+Holder, and derivatives thereof.
+
+"Copyright Holder" is whoever is named in the copyright or copyright notice
+for the package.
+
+"You" and "your" refer to each licensee under this agreement.
+
+"Reasonably" means in a manner that would be considered reasonable by a
+prudent person. Compliance does not require unanimous consent, but rather a
+consensus of prudent parties.
+
+"Freely Available" means that no fee is charged for the item, and that the
+item is available for re-distribution at no cost.
+
+"Freely Distributable" means the same as Freely Available.
+
+1. Artistic License 2.0
+
+   (a) Definitions
+
+       i. "Copyright Holder" means the individual(s) or organization(s)
+          named in the copyright notice for the entire Package.
+
+       ii. "Contributor" means any party that has contributed code or other
+           material to the Package, in accordance with the Copyright Holder's
+           procedures.
+
+       iii. "You" and "your" refers to each individual or legal entity
+            exercising rights granted by this License.
+
+       iv. "Package" refers to the collection of files distributed by the
+           Copyright Holder, and derivatives thereof.
+
+       v. "Modification" refers to any addition to or deletion from the
+          substance or structure of either the Package itself or any
+          Derivative Work of the Package, but does not include changes or
+          additions to any files that are explicitly excepted by the Package.
+
+       vi. "Derivative Work" refers to any work that is based on (or derived
+           from) the Package, including but not limited to any modifications
+           thereto.
+
+   (b) Permission for Use and Modification
+
+       i. You are permitted to use this Package in source form, compiled form,
+          or in either form, provided that you comply with all of the terms
+          and conditions of this License.
+
+       ii. You may make modifications to the source code of this Package or
+           Derivative Works.
+
+   (c) Distribution of Modified Versions
+
+       i. If you modify this Package, you may distribute the modified Package
+          under the same terms as the original Package, provided that you:
+
+          - Make the modified Package available to the Copyright Holder at no
+            cost;
+          - Document the nature of the modifications;
+          - Retain all copyright and license notices; and
+          - Include a notice stating that the Package has been modified.
+
+   (d) You may distribute binary forms of this Package or Derivative Works
+       provided that you:
+
+       i. Include the same copyright and license notices and disclaimers as
+          the original Package, in the same locations;
+       ii. Ensure that all documentation associated with the binary form
+           makes clear that any modifications have been made; and
+       iii. Ensure that all documentation and other notices carried with the
+            binary form clearly state the origin and copyright of the Package.
+
+2. It is not permitted to place the Package under any other license.
+
+3. If you make modifications to this Package, you may distribute the modified
+   Package under the same terms as this License, as long as you comply with
+   the requirements of this License.
+
+4. Your fair use rights are in no way restricted by this License.
+
+5. THIS PACKAGE IS PROVIDED BY THE COPYRIGHT HOLDER "AS IS" AND WITHOUT ANY
+   EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+   WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
+6. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY DIRECT, INDIRECT,
+   INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+   DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+   THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+   (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+   THIS PACKAGE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
